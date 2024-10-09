@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { SheetsService } from './services/sheets.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private sheet: SheetsService) {
+    sheet.getProduct().then(res => {
+      console.log(res);
+
+    })
+  }
 }
