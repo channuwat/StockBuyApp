@@ -1,3 +1,33 @@
-<p>
-  material works!
-</p>
+<ion-header mode="ios">
+  <ion-searchbar mode="ios" [(ngModel)]="search"></ion-searchbar>
+</ion-header>
+<ion-content fixed-slot-placement="before">
+  <ion-list [inset]="true">
+    <ion-item *ngFor="let item of material | searchFilter : search" [button]="true" detail="false" (click)="onAddMaterial(item)">
+      <div class="unread-indicator-wrapper" slot="start">
+        <div class="unread-indicator"></div>
+      </div>
+      <ion-label>
+        <strong>{{item.GROUP}} : </strong>
+        <ion-text>{{item.PRODUCT}}</ion-text><br />
+        <ion-note color="medium" class="ion-text-wrap">
+          หน่วยนับ : {{item.UNIT}}
+        </ion-note>
+      </ion-label>
+      <div class="metadata-end-wrapper" slot="end">
+        <ion-note color="medium">{{item.PRICE}}.-</ion-note>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<!-- <ion-card *ngFor="let item of material">
+    <ion-card-header>
+      <ion-card-title>{{item.PRODUCT}}</ion-card-title>
+      <ion-card-subtitle>กลุ่มวัตถุดิบ : {{item.GROUP}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      ราคา : {{item.PRICE +" / "+item.UNIT}}
+    </ion-card-content>
+  </ion-card> -->

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SheetsService } from '../services/sheets.service';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor(public sheet: SheetsService) {
+  }
+
+  itemStorage() {
+    return this.sheet.getStore('MaterialStorage')?.length ?? 0
+  }
 
 }

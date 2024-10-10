@@ -4,6 +4,7 @@
     <ion-tab-button tab="cart" href="/tabs/cart">
       <ion-icon aria-hidden="true" name="triangle"></ion-icon>
       <ion-label>Tab 1</ion-label>
+      <ion-badge color="danger" *ngIf="itemStorage() > 0">{{itemStorage()}}</ion-badge>
     </ion-tab-button>
 
     <ion-tab-button tab="material" href="/tabs/material">

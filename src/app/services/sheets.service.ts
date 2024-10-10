@@ -9,7 +9,7 @@ export class SheetsService {
 
   constructor(public http: HttpClient) { }
 
-  getProduct() {
+  getMaterial() {
     return new Promise((resolve, reject) => {
       this.http.get(environment.CONNECTION_URL)//, 
         .subscribe(res => {
@@ -22,5 +22,15 @@ export class SheetsService {
           reject(err);
         });
     });
+  }
+
+
+  setStore(key: string, value: any) {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  getStore(key: string) {
+    let store: any = localStorage.getItem(key) ?? null
+    return JSON.parse(store)
   }
 }
