@@ -1,3 +1,47 @@
-<p>
-  cart works!
-</p>
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-title>วัตถุดิบที่ต้องซื้อ</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="clearMaterial()">
+        ล้างค่า
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fixed-slot-placement="before">
+  <ion-list [inset]="true">
+    <ion-item *ngFor="let item of material" [button]="true" detail="false">
+      <div class="unread-indicator-wrapper" slot="start" (click)="removeMaterial(item)">
+        <ion-button class="remove" shape="round" color="danger">
+          <ion-icon name="trash-bin-outline"></ion-icon>
+        </ion-button>
+      </div>
+      <ion-label>
+        <strong>{{item.GROUP}} : </strong>
+        <ion-text>{{item.PRODUCT}} ({{item.UNIT}})</ion-text><br />
+        <ion-note color="medium" class="ion-text-wrap">
+          <div class="add-actions ion-padding-vertical">
+            <ion-button shape="round" color="success" (click)="addMaterial(1,item)">
+              <ion-icon slot="icon-only" name="caret-up-outline"></ion-icon>
+            </ion-button>
+            <ion-input class="ion-padding-horizontal" type="number" [min]="0" [(ngModel)]="item.amount"
+              (ionBlur)="onChangeAmount(item)"></ion-input>
+            <ion-button shape="round" color="success" (click)="addMaterial(-1,item)">
+              <ion-icon slot="icon-only" name="caret-down-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-note>
+      </ion-label>
+      <div class="metadata-end-wrapper" slot="end">
+        <strong>
+          <ion-note color="medium">{{item.PRICE * item.amount}} ฿</ion-note>
+        </strong>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer mode="ios">
+  <ion-toolbar>
+    <ion-title>{{totalPrice()}}฿</ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -2,14 +2,14 @@
 
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="cart" href="/tabs/cart">
-      <ion-icon aria-hidden="true" name="triangle"></ion-icon>
-      <ion-label>Tab 1</ion-label>
+      <ion-icon aria-hidden="true" name="cart"></ion-icon>
+      <ion-label>ที่ต้องซื้อ</ion-label>
       <ion-badge color="danger" *ngIf="itemStorage() > 0">{{itemStorage()}}</ion-badge>
     </ion-tab-button>
 
     <ion-tab-button tab="material" href="/tabs/material">
-      <ion-icon aria-hidden="true" name="ellipse"></ion-icon>
-      <ion-label>Tab 2</ion-label>
+      <ion-icon aria-hidden="true" name="document-text"></ion-icon>
+      <ion-label>วัตถุดิบ</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 
